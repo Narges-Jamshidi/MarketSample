@@ -2,10 +2,10 @@
 
 public class User
 {
-    private string username { get; set; }
-    private string password { get; set; }
-    private int credit {get;set;}
-    private List<string> items = new List<string>();
+    public string username { get; set; }
+    public string password { get; set; }
+    public double credit {get;set;}
+    private List<Item> items = new List<Item>();
 
     public User(string username, string password)
     {
@@ -14,12 +14,12 @@ public class User
         this.credit = 50;
     }
 
-    public void SetItemToList(string item)
+    public void SetItemToList(Item item)
     {
         items.Add(item);
     }
 
-    public List<string> GetItems()
+    public List<Item> GetItems()
     {
         return items;
     }

@@ -4,7 +4,7 @@ public class Item
 {
     private string name { get; }
     private string description { get; }
-    private double cost { get; }
+    public double cost { get; }
 
     public Item(string name, string description, double cost)
     {
