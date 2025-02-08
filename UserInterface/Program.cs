@@ -1,2 +1,8 @@
 ﻿
-Console.WriteLine("Hi User");
+public class Program
+{
+    public static void Main()
+    {
+        
+    }
+}

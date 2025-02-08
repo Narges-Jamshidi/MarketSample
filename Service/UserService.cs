@@ -23,4 +23,18 @@ public class UserService : IUserService
     {
         user.credit += newCredentials;
     }
+
+    public User GetUser(string username, string password)
+    {
+        foreach (var user in Database.getDatabase().UserList)
+        {
+            if (user.password == password && user.username == username)
+            {
+                return user;
+            }
+        }
+        return null;
+    }
+    
+    
 }

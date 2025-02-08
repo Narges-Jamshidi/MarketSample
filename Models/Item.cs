@@ -2,8 +2,8 @@
 
 public class Item
 {
-    private string name { get; }
-    private string description { get; }
+    public string name { get; }
+    public string description { get; }
     public double cost { get; }
 
     public Item(string name, string description, double cost)
