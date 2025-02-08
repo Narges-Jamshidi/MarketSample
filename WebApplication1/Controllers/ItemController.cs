@@ -30,11 +30,11 @@ public class ItemController : ControllerBase
 
 
     [HttpPut("add-item")]
-    public IActionResult AddItem([FromBody] Item item, int quantity)
+    public IActionResult AddItem(Item item, int quantity)
     {
         if (_user == null)
         {
-            return Unauthorized();
+            return Unauthorized("You are not logged in");
         }
 
         try
@@ -47,6 +47,42 @@ public class ItemController : ControllerBase
             return BadRequest(e.Message);
         }
     }
-    
-    
+
+    [HttpDelete("delete-item")]
+    public IActionResult DeleteItem(Item item, int quantity)
+    {
+        if (_user == null)
+        {
+            return Unauthorized("You are not logged in");
+        }
+
+        try
+        {
+            _itemService.DeleteItem(_user, item, quantity);
+            return Ok("Item deleted");
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
+    [HttpPut("buy-item")]
+    public IActionResult BuyItem()
+    {
+        if (_user == null)
+        {
+            return Unauthorized("You are not logged in");
+        }
+        try
+        {
+            String items = _user.GetItems().ToString();
+            _itemService.BuyItem(_user);
+            return Ok("Item bought" + items);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
 }

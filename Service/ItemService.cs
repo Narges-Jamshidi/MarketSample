@@ -40,18 +40,4 @@ public class ItemService : IItemService
             throw new RuntimeBinderException("the item does not exist");
         }
     }
-
-    public Item GetItem(User user, String itemName)
-    {
-        Item requestedItem = null;
-        foreach (Item item in user.GetItems())
-        {
-            if (item.name == itemName)
-            {
-                requestedItem = item;
-            }
-        }
-        
-        return requestedItem;
-    }
 }
